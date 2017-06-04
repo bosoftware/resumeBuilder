@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Resume Builder
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="outer-content">
+  <ion-list>
+    <ion-item>
+      <button ion-button color="blue" icon-left class="menu-button">
+         <span class="button-inner">
+
+      {{profileName}}
+      </span>
+      </button>
+    </ion-item>
+
+    <ion-item-sliding>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button" (click)="showPersonDetails()">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Personal Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Upload Photo
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Education Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Experience Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Project Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Reference Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Other Details
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="blue" icon-left class="menu-button">
+           <span class="button-inner">
+
+        Complete
+        </span>
+        </button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="light" icon-left class="menu-button">
+           <span class="button-inner">
+        <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          Generate Resume
+        </span>
+        </button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

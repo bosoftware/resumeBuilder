@@ -1,0 +1,12 @@
+<ion-card>
+  <ion-card-header>
+    Profile
+  </ion-card-header>
+  <ion-card-content>
+    <ion-input type="text" name="profileName" [(ngModel)]="profileName" placeholder="Please input profile name"  required></ion-input>
+    <ion-buttons text-center>
+      <button ion-button type="button" (click)="startApp()">Save</button>
+    </ion-buttons>
+
+  </ion-card-content>
+</ion-card>
