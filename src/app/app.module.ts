@@ -11,12 +11,17 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import {ProfilePage} from '../pages/profile/profile';
 import {PersonDetailsPage} from '../pages/person-details/person-details';
-
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+import {PhotoPage} from '../pages/photo/photo';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ProfilePage,
+    PhotoPage,
     PersonDetailsPage
   ],
   imports: [
@@ -30,11 +35,16 @@ import {PersonDetailsPage} from '../pages/person-details/person-details';
     MyApp,
     HomePage,
     ProfilePage,
-    PersonDetailsPage
+    PersonDetailsPage,
+    PhotoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfileDataProvider
   ]

@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 import {ProfilePage} from '../profile/profile';
 import {PersonDetailsPage} from '../person-details/person-details';
-
+import {PhotoPage} from '../photo/photo';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -24,5 +24,9 @@ export class HomePage {
 
   showPersonDetails(){
     this.navCtrl.push(PersonDetailsPage);
+  }
+
+  showPhoto(){
+    this.navCtrl.push(PhotoPage);
   }
 }
