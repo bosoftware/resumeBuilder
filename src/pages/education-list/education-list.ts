@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams ,Navbar} from 'ionic-angular';
 import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 import {EducationModel} from '../../model/education-model';
 import {EducationDetailsPage} from '../../pages/education-details/education-details';
@@ -15,22 +15,30 @@ import {EducationDetailsPage} from '../../pages/education-details/education-deta
   templateUrl: 'education-list.html',
 })
 export class EducationListPage {
-
-  educationList:Array<EducationModel>;
+  @ViewChild(Navbar) navBar: Navbar;
+  educationList:Array<EducationModel> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public profileDataProvider:ProfileDataProvider) {
     this.profileDataProvider.getValue(this.profileDataProvider.EDUCATION_LIST).then((value) => {
-      this.educationList = value;
+      if (value!=null){
+        this.educationList = value;
+      }
+
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EducationListPage');
+    this.navBar.backButtonClick = (e: UIEvent) => {
+      this.profileDataProvider.setValue(this.profileDataProvider.EDUCATION_LIST,this.educationList);
+      this.navCtrl.pop();
+    };
   }
 
   itemSelected(educationItem){
     if (educationItem==null){
-      //educationItem = new EducationModel();
+      educationItem = new EducationModel('','','',new Date());
+      this.educationList.push(educationItem);
     }
     this.navCtrl.push(EducationDetailsPage,{
         educationItem:educationItem

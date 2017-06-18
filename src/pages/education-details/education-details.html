@@ -14,6 +14,7 @@
 
 
 <ion-content padding>
+  <form #educationForm="ngForm" novalidate>
   <ion-list>
 
     <ion-item>
@@ -36,4 +37,5 @@
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="completionDate" name="completionDate"></ion-datetime>
     </ion-item>
   </ion-list>
+</form>
 </ion-content>

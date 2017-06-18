@@ -18,6 +18,7 @@ import { Camera } from '@ionic-native/camera';
 import {PhotoPage} from '../pages/photo/photo';
 import {EducationListPage} from '../pages/education-list/education-list';
 import {EducationDetailsPage} from '../pages/education-details/education-details';
+import { UtilityProvider } from '../providers/utility/utility';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {EducationDetailsPage} from '../pages/education-details/education-details
     Camera,
     FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProfileDataProvider
+    ProfileDataProvider,
+    UtilityProvider
   ]
 })
 export class AppModule {}
