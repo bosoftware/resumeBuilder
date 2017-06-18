@@ -4,6 +4,8 @@ import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 import {ProfilePage} from '../profile/profile';
 import {PersonDetailsPage} from '../person-details/person-details';
 import {PhotoPage} from '../photo/photo';
+import {EducationListPage} from '../education-list/education-list';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -28,5 +30,9 @@ export class HomePage {
 
   showPhoto(){
     this.navCtrl.push(PhotoPage);
+  }
+
+  showEducationList(){
+    this.navCtrl.push(EducationListPage);
   }
 }

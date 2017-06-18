@@ -21,6 +21,7 @@ export class ProfileDataProvider {
   LANGUAGE="language";
   CONTRACT_NO = "contractNo";
   EMAIL = "email";
+  EDUCATION_LIST = "educationList";
 
   name: string;
   sex: string;
@@ -36,16 +37,16 @@ export class ProfileDataProvider {
     public http: Http
   ) {}
 
-  getProfile(): Promise<string> {
+  getProfile(): Promise<any> {
     return this.getValue(this.PROFILE);
   };
 
 
-  setValue(key:string,value:string):void{
+  setValue(key:string,value:any):void{
     this.storage.set(key,value);
   };
 
-  getValue(key:string):Promise<string>{
+  getValue(key:string):Promise<any>{
     return this.storage.get(key).then((value)=>{
       return value;
     });

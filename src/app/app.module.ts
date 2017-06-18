@@ -16,13 +16,18 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import {PhotoPage} from '../pages/photo/photo';
+import {EducationListPage} from '../pages/education-list/education-list';
+import {EducationDetailsPage} from '../pages/education-details/education-details';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ProfilePage,
     PhotoPage,
-    PersonDetailsPage
+    EducationListPage,
+    PersonDetailsPage,
+    EducationDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import {PhotoPage} from '../pages/photo/photo';
     HomePage,
     ProfilePage,
     PersonDetailsPage,
-    PhotoPage
+    EducationListPage,
+    PhotoPage,
+    EducationDetailsPage
   ],
   providers: [
     StatusBar,

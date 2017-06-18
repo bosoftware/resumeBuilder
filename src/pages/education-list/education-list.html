@@ -1,0 +1,25 @@
+<!--
+  Generated template for the EducationListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Education List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div style="text-align:center">
+    <button ion-button color="secondary" (click)="itemSelected()">Add</button>
+  </div>
+  <ion-list>
+    <button ion-item *ngFor="let educationItem of educationList" (click)="itemSelected(educationItem)">
+      {{ educationItem }}
+    </button>
+  </ion-list>
+</ion-content>
