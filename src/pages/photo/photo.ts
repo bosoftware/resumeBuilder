@@ -4,6 +4,7 @@ import { File } from '@ionic-native/file';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 /**
  * Generated class for the PhotoPage page.
  *
@@ -24,7 +25,12 @@ export class PhotoPage {
   lastImage: string = null;
   loading: Loading;
 
-  constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController) { }
+  constructor(public navCtrl: NavController, private camera: Camera, private transfer: Transfer, private file: File, private filePath: FilePath, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController,
+  public profileDataProvider:ProfileDataProvider) {
+    this.profileDataProvider.getValue(this.profileDataProvider.IMAGE_URL).then((value) => {
+      this.lastImage = value;
+    });
+  }
 
     public presentActionSheet() {
       let actionSheet = this.actionSheetCtrl.create({

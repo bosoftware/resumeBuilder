@@ -25,6 +25,7 @@ export class ProfileDataProvider {
   EXPERIENCE_LIST = "experienceList";
   PROJECT_LIST = "projectList";
   REFERENCE_LIST = "referenceList";
+  IMAGE_URL = "imageUrl";
 
   name: string;
   sex: string;
@@ -54,5 +55,6 @@ export class ProfileDataProvider {
       return value;
     });
   };
+
 
 }
