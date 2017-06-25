@@ -7,6 +7,7 @@ import {PhotoPage} from '../photo/photo';
 import {EducationListPage} from '../education-list/education-list';
 import {ExperienceListPage} from '../experience-list/experience-list';
 import {ProjectListPage} from '../project-list/project-list';
+import {ProjectDetailsPage} from '../project-details/project-details';
 
 @Component({
   selector: 'page-home',

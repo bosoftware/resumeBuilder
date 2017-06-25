@@ -7,12 +7,40 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>project-details</ion-title>
+    <ion-title>Project Details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
 
+    <ion-item>
+      <ion-label stacked>Project Title</ion-label>
+      <ion-input type="text"  [(ngModel)]="projectTitle" name="projectTitle"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>From</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="projectFrom" name="projectFrom"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>To</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="projectTo" name="projectTo"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Role</ion-label>
+      <ion-input type="text"  [(ngModel)]="role" name="role"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Team Size</ion-label>
+      <ion-input type="text"  [(ngModel)]="teamSize" name="teamSize"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Expertise</ion-label>
+      <ion-input type="text"  [(ngModel)]="expertise" name="expertise"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>

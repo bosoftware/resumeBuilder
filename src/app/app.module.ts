@@ -20,8 +20,10 @@ import {EducationListPage} from '../pages/education-list/education-list';
 import {EducationDetailsPage} from '../pages/education-details/education-details';
 import {ExperienceListPage} from '../pages/experience-list/experience-list';
 import {ExperienceDetailsPage} from '../pages/experience-details/experience-details';
-import {ProjectListPage} from '../pages/project-list/project-list'
+import {ProjectListPage} from '../pages/project-list/project-list';
+import {ProjectDetailsPage} from '../pages/project-details/project-details';
 import { UtilityProvider } from '../providers/utility/utility';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     PersonDetailsPage,
     EducationDetailsPage,
     ExperienceDetailsPage,
-    ExperienceListPage
+    ExperienceListPage,
+    ProjectListPage,
+    ProjectDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     PhotoPage,
     EducationDetailsPage,
     ExperienceListPage,
-    ExperienceDetailsPage
+    ExperienceDetailsPage,
+    ProjectListPage,
+    ProjectDetailsPage
   ],
   providers: [
     StatusBar,
