@@ -20,7 +20,7 @@ import {EducationListPage} from '../pages/education-list/education-list';
 import {EducationDetailsPage} from '../pages/education-details/education-details';
 import {ExperienceListPage} from '../pages/experience-list/experience-list';
 import {ExperienceDetailsPage} from '../pages/experience-details/experience-details';
-
+import {ProjectListPage} from '../pages/project-list/project-list'
 import { UtilityProvider } from '../providers/utility/utility';
 
 @NgModule({
