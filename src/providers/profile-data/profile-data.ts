@@ -24,6 +24,7 @@ export class ProfileDataProvider {
   EDUCATION_LIST = "educationList";
   EXPERIENCE_LIST = "experienceList";
   PROJECT_LIST = "projectList";
+  REFERENCE_LIST = "referenceList";
 
   name: string;
   sex: string;

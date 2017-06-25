@@ -23,7 +23,8 @@ import {ExperienceDetailsPage} from '../pages/experience-details/experience-deta
 import {ProjectListPage} from '../pages/project-list/project-list';
 import {ProjectDetailsPage} from '../pages/project-details/project-details';
 import { UtilityProvider } from '../providers/utility/utility';
-
+import {ReferenceListPage} from '../pages/reference-list/reference-list';
+import {ReferenceDetailsPage} from '../pages/reference-details/reference-details';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     ExperienceDetailsPage,
     ExperienceListPage,
     ProjectListPage,
-    ProjectDetailsPage
+    ProjectDetailsPage,
+    ReferenceListPage,
+    ReferenceDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     ExperienceListPage,
     ExperienceDetailsPage,
     ProjectListPage,
-    ProjectDetailsPage
+    ProjectDetailsPage,
+    ReferenceListPage,
+    ReferenceDetailsPage
   ],
   providers: [
     StatusBar,

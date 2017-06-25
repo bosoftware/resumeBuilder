@@ -8,6 +8,7 @@ import {EducationListPage} from '../education-list/education-list';
 import {ExperienceListPage} from '../experience-list/experience-list';
 import {ProjectListPage} from '../project-list/project-list';
 import {ProjectDetailsPage} from '../project-details/project-details';
+import {ReferenceListPage} from '../reference-list/reference-list';
 
 @Component({
   selector: 'page-home',
@@ -45,5 +46,8 @@ export class HomePage {
 
   showProjectList(){
     this.navCtrl.push(ProjectListPage);
+  }
+  showReferenceList(){
+    this.navCtrl.push(ReferenceListPage);
   }
 }
