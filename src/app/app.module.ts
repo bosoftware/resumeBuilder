@@ -25,6 +25,7 @@ import {ProjectDetailsPage} from '../pages/project-details/project-details';
 import { UtilityProvider } from '../providers/utility/utility';
 import {ReferenceListPage} from '../pages/reference-list/reference-list';
 import {ReferenceDetailsPage} from '../pages/reference-details/reference-details';
+import {PdfviewPage} from '../pages/pdfview/pdfview';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ReferenceDetailsPage} from '../pages/reference-details/reference-details
     ProjectListPage,
     ProjectDetailsPage,
     ReferenceListPage,
-    ReferenceDetailsPage
+    ReferenceDetailsPage,
+    PdfviewPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import {ReferenceDetailsPage} from '../pages/reference-details/reference-details
     ProjectListPage,
     ProjectDetailsPage,
     ReferenceListPage,
-    ReferenceDetailsPage
+    ReferenceDetailsPage,
+    PdfviewPage
   ],
   providers: [
     StatusBar,

@@ -9,6 +9,7 @@ import {ExperienceListPage} from '../experience-list/experience-list';
 import {ProjectListPage} from '../project-list/project-list';
 import {ProjectDetailsPage} from '../project-details/project-details';
 import {ReferenceListPage} from '../reference-list/reference-list';
+import {PdfviewPage} from '../pdfview/pdfview';
 
 @Component({
   selector: 'page-home',
@@ -49,5 +50,8 @@ export class HomePage {
   }
   showReferenceList(){
     this.navCtrl.push(ReferenceListPage);
+  }
+  showPdfview(){
+    this.navCtrl.push(PdfviewPage);
   }
 }
