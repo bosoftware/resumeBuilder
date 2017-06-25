@@ -22,6 +22,8 @@ export class ProfileDataProvider {
   CONTRACT_NO = "contractNo";
   EMAIL = "email";
   EDUCATION_LIST = "educationList";
+  EXPERIENCE_LIST = "experienceList";
+
 
   name: string;
   sex: string;
@@ -30,7 +32,7 @@ export class ProfileDataProvider {
   language: string;
   contractNo: string;
   email: string;
-
+  
   constructor(
     public events: Events,
     public storage: Storage,

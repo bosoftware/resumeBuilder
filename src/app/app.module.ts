@@ -18,6 +18,9 @@ import { Camera } from '@ionic-native/camera';
 import {PhotoPage} from '../pages/photo/photo';
 import {EducationListPage} from '../pages/education-list/education-list';
 import {EducationDetailsPage} from '../pages/education-details/education-details';
+import {ExperienceListPage} from '../pages/experience-list/experience-list';
+import {ExperienceDetailsPage} from '../pages/experience-details/experience-details';
+
 import { UtilityProvider } from '../providers/utility/utility';
 
 @NgModule({
@@ -28,7 +31,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     PhotoPage,
     EducationListPage,
     PersonDetailsPage,
-    EducationDetailsPage
+    EducationDetailsPage,
+    ExperienceDetailsPage,
+    ExperienceListPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,9 @@ import { UtilityProvider } from '../providers/utility/utility';
     PersonDetailsPage,
     EducationListPage,
     PhotoPage,
-    EducationDetailsPage
+    EducationDetailsPage,
+    ExperienceListPage,
+    ExperienceDetailsPage
   ],
   providers: [
     StatusBar,

@@ -14,22 +14,22 @@
 
 
 <ion-content padding>
-  <form #educationForm="ngForm" novalidate>
+
   <ion-list>
 
     <ion-item>
       <ion-label stacked>Degree or Certificate</ion-label>
-      <ion-input type="text" required [(ngModel)]="degree" name="degree"></ion-input>
+      <ion-input type="text"  [(ngModel)]="degree" name="degree"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>School or University</ion-label>
-      <ion-input type="text" required [(ngModel)]="school" name="school"></ion-input>
+      <ion-input type="text"  [(ngModel)]="school" name="school"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Percentage or CGPA</ion-label>
-      <ion-input type="text" required [(ngModel)]="cgpa" name="cpga"></ion-input>
+      <ion-input type="text"  [(ngModel)]="cgpa" name="cpga"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -37,5 +37,5 @@
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="completionDate" name="completionDate"></ion-datetime>
     </ion-item>
   </ion-list>
-</form>
+
 </ion-content>

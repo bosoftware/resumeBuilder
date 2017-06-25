@@ -1,5 +1,5 @@
 <!--
-  Generated template for the EducationListPage page.
+  Generated template for the ExperienceListPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Education List</ion-title>
+    <ion-title>Experience List</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,10 +18,10 @@
     <button ion-button color="secondary" (click)="itemSelected()">Add</button>
   </div>
   <ion-list>
-    <ion-item *ngFor="let educationItem of educationList" >
+    <ion-item *ngFor="let experienceItem of experienceList" >
       <span item-start class="dot"></span>
-      <ion-label fixed class="educationItemLabel" (click)="itemSelected(educationItem)">{{ educationItem.degree }}</ion-label>
-      <ion-icon item-end name="remove-circle" (click)="delete(educationItem)"></ion-icon>
+      <ion-label fixed class="experienceItemLabel" (click)="itemSelected(experienceItem)">{{ experienceItem.organization }}</ion-label>
+      <ion-icon item-end name="remove-circle" (click)="delete(experienceItem)"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

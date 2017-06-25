@@ -5,6 +5,8 @@ import {ProfilePage} from '../profile/profile';
 import {PersonDetailsPage} from '../person-details/person-details';
 import {PhotoPage} from '../photo/photo';
 import {EducationListPage} from '../education-list/education-list';
+import {ExperienceListPage} from '../experience-list/experience-list';
+
 
 @Component({
   selector: 'page-home',
@@ -34,5 +36,9 @@ export class HomePage {
 
   showEducationList(){
     this.navCtrl.push(EducationListPage);
+  }
+
+  showExperienceList(){
+    this.navCtrl.push(ExperienceListPage);
   }
 }

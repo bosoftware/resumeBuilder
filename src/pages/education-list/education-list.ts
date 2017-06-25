@@ -1,5 +1,5 @@
-import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Navbar} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Navbar} from 'ionic-angular';
 import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 import {EducationModel} from '../../model/education-model';
 import {EducationDetailsPage} from '../../pages/education-details/education-details';
@@ -16,11 +16,11 @@ import {EducationDetailsPage} from '../../pages/education-details/education-deta
 })
 export class EducationListPage {
   @ViewChild(Navbar) navBar: Navbar;
-  educationList:Array<EducationModel> = [];
+  educationList: Array<EducationModel> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public profileDataProvider:ProfileDataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public profileDataProvider: ProfileDataProvider) {
     this.profileDataProvider.getValue(this.profileDataProvider.EDUCATION_LIST).then((value) => {
-      if (value!=null){
+      if (value != null) {
         this.educationList = value;
       }
 
@@ -30,18 +30,25 @@ export class EducationListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EducationListPage');
     this.navBar.backButtonClick = (e: UIEvent) => {
-      this.profileDataProvider.setValue(this.profileDataProvider.EDUCATION_LIST,this.educationList);
+      this.profileDataProvider.setValue(this.profileDataProvider.EDUCATION_LIST, this.educationList);
       this.navCtrl.pop();
     };
   }
 
-  itemSelected(educationItem){
-    if (educationItem==null){
-      educationItem = new EducationModel('','','',new Date());
+  itemSelected(educationItem) {
+    if (educationItem == null) {
+      educationItem = new EducationModel('', '', '', new Date());
       this.educationList.push(educationItem);
     }
-    this.navCtrl.push(EducationDetailsPage,{
-        educationItem:educationItem
+    this.navCtrl.push(EducationDetailsPage, {
+      educationItem: educationItem
     });
+  }
+
+  delete(educationItem) {
+    var index = this.educationList.indexOf(educationItem, 0);
+    if (index > -1) {
+      this.educationList.splice(index, 1);
+    }
   }
 }
