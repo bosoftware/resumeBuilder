@@ -26,7 +26,8 @@ export class ProfileDataProvider {
   PROJECT_LIST = "projectList";
   REFERENCE_LIST = "referenceList";
   IMAGE_URL = "imageUrl";
-
+  IMAGE_PATH = "imagePath";
+  
   name: string;
   sex: string;
   dateOfBirth: string;

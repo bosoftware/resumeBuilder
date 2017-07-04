@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
+import {EducationModel} from '../../model/education-model';
 import * as pdfmake from 'pdfmake/build/pdfmake';
 /**
  * Generated class for the PdfviewPage page.
@@ -8,7 +9,6 @@ import * as pdfmake from 'pdfmake/build/pdfmake';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
- declare var cordova: any;
 
 
 @IonicPage()
@@ -26,14 +26,14 @@ export class PdfviewPage {
   language: string;
   contractNo: string;
   email: string;
-  imageUrl:string;
-  imagePath:string='';
+  imagePath: string = '';
+  educationList: Array<EducationModel> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, private profileDataProvider: ProfileDataProvider) {
 
 
   }
 
-  getAllData(){
+  getAllData() {
     this.profileDataProvider.getValue(this.profileDataProvider.NAME).then((value) => {
       this.name = value;
     });
@@ -55,9 +55,16 @@ export class PdfviewPage {
     this.profileDataProvider.getValue(this.profileDataProvider.EMAIL).then((value) => {
       this.email = value;
     });
-    this.profileDataProvider.getValue(this.profileDataProvider.IMAGE_URL).then((value) => {
-      this.imageUrl = value;
-      this.imagePath=cordova.file.dataDirectory + this.imageUrl;
+    this.profileDataProvider.getValue(this.profileDataProvider.IMAGE_PATH).then((value) => {
+      if (value != null) {
+        this.imagePath = value;
+      }
+    });
+    this.profileDataProvider.getValue(this.profileDataProvider.EDUCATION_LIST).then((value) => {
+      if (value != null) {
+        this.educationList = value;
+      }
+
     });
   }
 
@@ -66,13 +73,43 @@ export class PdfviewPage {
     this.getAllData();
 
   }
+  getImageString() {
+    if (this.imagePath.length > 0) {
+      return {width: '20%',image:" + this.imagePath + "};
+    } else {
+      return {width: '20%',text:''};
+    }
+  }
 
+
+
+  getEducationList(){
+    var educationItems = this.educationList.map(function(education) {
+
+var dateString = education.completionDate;
+         return [education.degree, education.school, education.cgpa, ''+dateString];
+     });
+      var string = {style: 'table',table: {body: [['Degree Or Certificate', 'University or Institute', 'Percentage or CGPA', 'Passing Year']].concat(educationItems)}};
+      return string;
+  }
+
+  // getEducationListString() {
+  //   var string:any;
+  //   for (var _i = 0; _i < this.educationList.length; _i++) {
+  //     var education = this.educationList[_i];
+  //     string += [  education.degree + ', ' + education.school + ', ' + education.cgpa + ', '+ education.completionDate  ];
+  //     if (_i != this.educationList.length - 1) {
+  //       string += ',';
+  //     }
+  //   }
+  //   return string;
+  // }
 
   generatePdf() {
     var dd = {
       content: [
         {
-          text: '\''+this.name+'\'',
+          text:  this.name,
           style: 'header'
         },
         {
@@ -90,12 +127,7 @@ export class PdfviewPage {
               this.address
               + ''
             },
-            {
-
-              width: '20%',
-
-              image: this.imagePath
-            }
+            this.getImageString()
           ],
           columnGap: 10
         },
@@ -117,16 +149,8 @@ export class PdfviewPage {
           text: 'Education Details:',
           style: 'header'
         },
-
-        {
-          style: 'table',
-          table: {
-            body: [
-              ['Degree Or Certificate', 'University or Institute', 'Percentage or CGPA', 'Passing Year'],
-              ['One value goes here', 'Another one here', 'OK?', 'a']
-            ]
-          }
-        },
+        this.getEducationList()
+          ,
         {
           table: {
             widths: ['*'],

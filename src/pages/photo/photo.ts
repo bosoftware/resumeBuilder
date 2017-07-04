@@ -103,6 +103,8 @@ private createFileName() {
 private copyFileToLocalDir(namePath, currentName, newFileName) {
   this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
     this.lastImage = newFileName;
+    this.profileDataProvider.setValue(this.profileDataProvider.IMAGE_URL,this.lastImage);
+    this.profileDataProvider.setValue(this.profileDataProvider.IMAGE_PATH,cordova.file.dataDirectory + this.lastImage);
   }, error => {
     this.presentToast('Error while storing file.');
   });
