@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProfileDataProvider} from '../../providers/profile-data/profile-data';
 import {EducationModel} from '../../model/education-model';
+import {ExperienceModel} from '../../model/experience-model';
+import {ProjectDetailsModel} from '../../model/project-model';
+import {ReferenceModel} from '../../model/reference-model';
+
 import * as pdfmake from 'pdfmake/build/pdfmake';
 /**
  * Generated class for the PdfviewPage page.
@@ -9,8 +13,6 @@ import * as pdfmake from 'pdfmake/build/pdfmake';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
-
 @IonicPage()
 @Component({
   selector: 'page-pdfview',
@@ -28,6 +30,10 @@ export class PdfviewPage {
   email: string;
   imagePath: string = '';
   educationList: Array<EducationModel> = [];
+  experienceList: Array<ExperienceModel> = [];
+  projectDetailsList: Array<ProjectDetailsModel> = [];
+  referenceList: Array<ReferenceModel> = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private profileDataProvider: ProfileDataProvider) {
 
 
@@ -64,7 +70,21 @@ export class PdfviewPage {
       if (value != null) {
         this.educationList = value;
       }
-
+    });
+    this.profileDataProvider.getValue(this.profileDataProvider.EXPERIENCE_LIST).then((value) => {
+      if (value != null) {
+        this.experienceList = value;
+      }
+    });
+    this.profileDataProvider.getValue(this.profileDataProvider.PROJECT_LIST).then((value) => {
+      if (value != null) {
+        this.projectDetailsList = value;
+      }
+    });
+    this.profileDataProvider.getValue(this.profileDataProvider.REFERENCE_LIST).then((value) => {
+      if (value != null) {
+        this.referenceList = value;
+      }
     });
   }
 
@@ -75,41 +95,86 @@ export class PdfviewPage {
   }
   getImageString() {
     if (this.imagePath.length > 0) {
-      return {width: '20%',image:" + this.imagePath + "};
+      return { width: '20%', image: " + this.imagePath + " };
     } else {
-      return {width: '20%',text:''};
+      return { width: '20%', text: '' };
     }
   }
 
 
 
-  getEducationList(){
+  getEducationList() {
     var educationItems = this.educationList.map(function(education) {
 
-var dateString = education.completionDate;
-         return [education.degree, education.school, education.cgpa, ''+dateString];
-     });
-      var string = {style: 'table',table: {body: [['Degree Or Certificate', 'University or Institute', 'Percentage or CGPA', 'Passing Year']].concat(educationItems)}};
-      return string;
+      var dateString = education.completionDate;
+      return [education.degree, education.school, education.cgpa, '' + dateString];
+    });
+    var string = { style: 'table', table: { body: [['Degree Or Certificate', 'University or Institute', 'Percentage or CGPA', 'Passing Year']].concat(educationItems) } };
+    return string;
   }
 
-  // getEducationListString() {
-  //   var string:any;
-  //   for (var _i = 0; _i < this.educationList.length; _i++) {
-  //     var education = this.educationList[_i];
-  //     string += [  education.degree + ', ' + education.school + ', ' + education.cgpa + ', '+ education.completionDate  ];
-  //     if (_i != this.educationList.length - 1) {
-  //       string += ',';
-  //     }
-  //   }
-  //   return string;
-  // }
+  getExperienceList() {
+    var experienceItems = this.experienceList.map(function(experienceItem) {
+      var string = {
+        columns: [
+          {
+            width: '40%',
+            text: 'Organization: \n Position: \n Duration: \n Location:\n Salary:\n Job Responsibilities:\n'
+          },
+          {
+            width: '60%',
+            text: experienceItem.organization + '\n' + experienceItem.position + '\n' + experienceItem.durationFrom + ' ' + experienceItem.durationTo + '\n' + experienceItem.location + '\n' + experienceItem.salary + '\n' + experienceItem.jobResponsibility
+          }
+        ]
+      }
+      return string;
+    });
+    return experienceItems;
+  }
+
+  getProjectDetailsList() {
+    var projectItems = this.projectDetailsList.map(function(projectDetailItem) {
+      var string = {
+        columns: [
+          {
+            width: '40%',
+            text: 'Project Title: \n Project Duration: \n Role: \n Team Size:\n Expertise:\n'
+          },
+          {
+            width: '60%',
+            text: projectDetailItem.projectTitle + '\n' + projectDetailItem.projectFrom + ' ' + projectDetailItem.projectTo + '\n' + projectDetailItem.role + ' ' + projectDetailItem.teamSize + '\n' + projectDetailItem.expertise + '\n'
+          }
+        ]
+      }
+      return string;
+    });
+    return projectItems;
+  }
+
+  getReferenceList() {
+    var referenceItems = this.referenceList.map(function(referenceItem) {
+      var string = {
+        columns: [
+          {
+            width: '40%',
+            text: 'Reference Name: \n Reference Details: \n Reference Contact No: \n Reference Email:\n'
+          },
+          {
+            width: '60%',
+            text: referenceItem.name + '\n' + referenceItem.details + '\n' + referenceItem.contactNo + '\n' + referenceItem.email + '\n'
+          }
+        ]
+      }
+      return string;
+    });
+    return referenceItems;
+  }
 
   generatePdf() {
     var dd = {
       content: [
         {
-          text:  this.name,
+          text: this.name,
           style: 'header'
         },
         {
@@ -150,7 +215,7 @@ var dateString = education.completionDate;
           style: 'header'
         },
         this.getEducationList()
-          ,
+        ,
         {
           table: {
             widths: ['*'],
@@ -171,26 +236,7 @@ var dateString = education.completionDate;
           text: 'Experience Details:',
           style: 'header'
         },
-
-
-    				{
-          columns: [
-            {
-
-              width: '40%',
-              text: 'Organization: \n Position: \n Duration: \n Location:\n Salary:\n Job Responsibilities:\n'
-            },
-            {
-
-              width: '60%',
-              text: 'organization\n position\nduration\nlocation\n salary\n job responseibl'
-              //image: 'data:image/jpeg;base64, image'
-            }
-          ],
-          columnGap: 0
-        },
-
-
+        this.getExperienceList(),
         {
           table: {
             widths: ['*'],
@@ -204,34 +250,14 @@ var dateString = education.completionDate;
               return 0;
             },
           },
-
-
-
-
         },
 
         {
           text: 'Project Details:',
           style: 'header'
         },
-
-    				{
-          columns: [
-            {
-
-              width: '40%',
-              text: 'Project Title: \n Project Duration: \n Role: \n Team Size:\n Expertise:'
-            },
-            {
-
-              width: '60%',
-              text: 'title\n duration\nrole\n team size\n expertise'
-              //image: 'data:image/jpeg;base64, image'
-            }
-          ],
-          columnGap: 0
-        },
-
+        this.getProjectDetailsList()
+        ,
         {
           table: {
             widths: ['*'],
@@ -245,34 +271,12 @@ var dateString = education.completionDate;
               return 0;
             },
           },
-
-
-
-
         },
         {
           text: 'Reference Details:',
           style: 'header'
         },
-
-    				{
-          columns: [
-            {
-
-              width: '40%',
-              text: 'Reference Name: \n Reference Details: \n Reference Contact No: \n Reference Email:\n'
-            },
-            {
-
-              width: '60%',
-              text: 'title\n duration\nrole\n team size\n expertise'
-              //image: 'data:image/jpeg;base64, image'
-            }
-          ],
-          columnGap: 0
-        },
-
-
+        this.getReferenceList(),
       ],
       styles: {
         header: {
@@ -294,8 +298,6 @@ var dateString = education.completionDate;
         },
       }
     };
-
-
     pdfmake.createPdf(dd).download();
   }
 }

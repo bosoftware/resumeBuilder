@@ -21,7 +21,7 @@ export class ReferenceListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public profileDataProvider:ProfileDataProvider) {
 
-        this.profileDataProvider.getValue(this.profileDataProvider.PROJECT_LIST).then((value) => {
+        this.profileDataProvider.getValue(this.profileDataProvider.REFERENCE_LIST).then((value) => {
           if (value != null) {
             this.referenceList = value;
           }
@@ -32,7 +32,7 @@ export class ReferenceListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReferenceListPage');
     this.navBar.backButtonClick = (e: UIEvent) => {
-      this.profileDataProvider.setValue(this.profileDataProvider.PROJECT_LIST, this.referenceList);
+      this.profileDataProvider.setValue(this.profileDataProvider.REFERENCE_LIST, this.referenceList);
       this.navCtrl.pop();
     };
   }
